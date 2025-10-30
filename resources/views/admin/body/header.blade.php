@@ -1,5 +1,5 @@
       <div class="topbar-custom">
-                <div class="container-xxl">
+                <div class="container-fluid">
                     <div class="d-flex justify-content-between">
                         <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
                             <li>

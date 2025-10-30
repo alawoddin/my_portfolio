@@ -11,6 +11,13 @@
                         <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+
+                        @auth
+                           <li class="nav__item"><a href="{{route('dashboard')}}" class="nav__link">Dashboard</a></li> 
+                        @else
+                            <li class="nav__item"><a href="{{route('login')}}" class="nav__link">Login</a></li>
+                        @endauth
+
                     </ul>
                 </div>
 
