@@ -1,7 +1,11 @@
  <header class="l-header">
+
+    @php
+        $homes = App\Models\Home::orderByDesc('id')->first();
+    @endphp
             <nav class="nav bd-grid">
                 <div>
-                    <a href="#" class="nav__logo">Marlon</a>
+                    <a href="#" class="nav__logo">{{$homes->title}}</a>
                 </div>
 
                 <div class="nav__menu" id="nav-menu">
