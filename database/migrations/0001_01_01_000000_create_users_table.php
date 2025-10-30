@@ -44,6 +44,14 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        Schema::create('abouts', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('information');
+            $table->string('photo')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**

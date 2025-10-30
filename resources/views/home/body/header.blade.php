@@ -5,7 +5,7 @@
     @endphp
             <nav class="nav bd-grid">
                 <div>
-                    <a href="#" class="nav__logo">{{$homes->title}}</a>
+                    <a href="#" class="nav__logo">{{$homes->title ?? 'N/A'}}</a>
                 </div>
 
                 <div class="nav__menu" id="nav-menu">
