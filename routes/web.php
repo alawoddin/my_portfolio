@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\googlecontroller;
 use App\Http\Controllers\ProfileController;
@@ -52,6 +53,15 @@ Route::controller(HomeController::class)->group(function() {
     Route::get('edit/home/{id}', 'EditHome')->name('home.edit');
     Route::post('update/home', 'UpdateHome')->name('update.home');
     Route::get('delete/home/{id}', 'DeleteHome')->name('home.delete');
+});
+
+Route::controller(AboutController::class)->group(function() {
+    Route::get('all/about' , 'AllAbout')->name('all.about');
+    Route::get('add/about' , 'AddAbout')->name('add.about');
+    Route::post('store/about', 'StoreAbout')->name('store.about');
+    Route::get('edit/about/{id}', 'EditAbout')->name('about.edit');
+    Route::post('update/about', 'UpdateAbout')->name('update.about');
+    Route::get('delete/about/{id}', 'DeleteAbout')->name('about.delete');
 
 
 });

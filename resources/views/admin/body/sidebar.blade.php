@@ -55,6 +55,26 @@
         </div>
     </li>
 
+        <li>
+        <a href="#about" data-bs-toggle="collapse">
+            <i data-feather="users"></i>
+            <span> About </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="about">
+            <ul class="nav-second-level">
+                <li>
+                    <a href="{{route('all.about')}}" class="tp-link">All About</a>
+                </li>
+                
+                
+                    
+            </ul>
+        </div>
+    </li>
+
+
+
     <li>
         <a href="#sidebarError" data-bs-toggle="collapse">
             <i data-feather="alert-octagon"></i>

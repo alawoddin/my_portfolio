@@ -54,14 +54,23 @@
                   $name   = $field['name'];
                   $label  = $field['label'] ?? ucfirst($name);
                   $type   = $field['type'] ?? 'text';
-                  $value  = $field['value'] ?? old($name);
+                  $value  = old($name, $field['value'] ?? null);   // old() first so it wins after validation errors
                   $half   = !empty($field['half']);
                   $req    = ($field['required'] ?? true) ? 'required' : '';
                   $id     = 'fld_'.$name;
 
-                  $isTextarea = ($field['as'] ?? null) === 'textarea';
+                  // Textarea detection supports both 'type' and 'as'
+                  $isTextarea = ($type === 'textarea') || (($field['as'] ?? null) === 'textarea');
                   $isSelect   = $type === 'select';
                   $isFile     = $type === 'file';
+
+                  // Common UI helpers
+                  $placeholder = $field['placeholder'] ?? null;
+
+                  // Textarea options
+                  $rows        = $field['rows'] ?? 3;
+                  $maxlength   = $field['maxlength'] ?? null;
+                  $showCounter = !empty($field['show_counter']);
 
                   // File options
                   $accept = $field['accept'] ?? null;
@@ -83,13 +92,24 @@
                   <label for="{{ $id }}" class="form-label">{{ ucfirst($label) }}</label>
 
                   @if($isTextarea)
-                    <textarea
-                      id="{{ $id }}"
-                      name="{{ $name }}"
-                      class="form-control @error($name) is-invalid @enderror"
-                      rows="{{ $field['rows'] ?? 3 }}"
-                      {{ $req }}
-                    >{{ $value }}</textarea>
+                    <div class="position-relative">
+                      <textarea
+                        id="{{ $id }}"
+                        name="{{ $name }}"
+                        class="form-control @error($name) is-invalid @enderror"
+                        rows="{{ $rows }}"
+                        @if($maxlength) maxlength="{{ $maxlength }}" @endif
+                        @if($placeholder) placeholder="{{ $placeholder }}" @endif
+                        {{ $req }}
+                      >{{ $value }}</textarea>
+
+                      @if($showCounter || $maxlength)
+                        <small class="text-muted d-block mt-1">
+                          <span id="{{ $id }}_count">{{ mb_strlen((string)$value ?? '') }}</span>
+                          @if($maxlength)/{{ $maxlength }}@endif
+                        </small>
+                      @endif
+                    </div>
                     @error($name)
                       <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -99,9 +119,10 @@
                       id="{{ $id }}"
                       name="{{ $name }}"
                       class="form-select @error($name) is-invalid @enderror"
+                      @if($placeholder) data-placeholder="{{ $placeholder }}" @endif
                       {{ $req }}
                     >
-                      <option value="">-- Select --</option>
+                      <option value="">{{ $placeholder ?? '-- Select --' }}</option>
                       @foreach ($field['options'] ?? [] as $optValue => $optLabel)
                         <option value="{{ $optValue }}" {{ (string)$optValue === (string)$value ? 'selected' : '' }}>
                           {{ $optLabel }}
@@ -143,6 +164,7 @@
                       name="{{ $name }}"
                       value="{{ $value }}"
                       class="form-control @error($name) is-invalid @enderror"
+                      @if($placeholder) placeholder="{{ $placeholder }}" @endif
                       {{ $req }}
                     >
                     @error($name)
@@ -187,3 +209,13 @@
     });
   </script>
 @endif
+
+{{-- Textarea live counter (works when show_counter or maxlength is set) --}}
+<script>
+  document.addEventListener('input', function(e){
+    const t = e.target;
+    if (!t.matches('textarea')) return;
+    const counter = document.getElementById(t.id + '_count');
+    if (counter) counter.textContent = (t.value || '').length;
+  });
+</script>
