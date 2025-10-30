@@ -21,6 +21,7 @@
 
          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
+
     </head>
 
     <!-- body start -->
@@ -104,6 +105,41 @@
  }
  @endif 
 </script>
+
+
+<script>
+  (function () {
+    const input   = document.getElementById('home_photo');
+    const preview = document.getElementById('home_photo_preview');
+    const clear   = document.getElementById('home_photo_clear');
+
+    if (!input || !preview || !clear) return;
+
+    input.addEventListener('change', function (e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) { clear.classList.add('d-none'); return; }
+      if (!file.type.startsWith('image/')) {
+        alert('Please choose an image file.');
+        input.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        preview.src = ev.target.result;
+        clear.classList.remove('d-none');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    clear.addEventListener('click', function () {
+      input.value = '';
+      // keep the existing image; just hide the clear button again
+      clear.classList.add('d-none');
+    });
+  })();
+</script>
+
+
 
     </body>
 </html>
