@@ -52,6 +52,22 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->timestamps();
         });
+
+            Schema::create('homes', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('button');
+            $table->string('photo');
+            $table->timestamps();
+        });
+
+          Schema::create('skills', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->string('photo');
+            $table->timestamps();
+        });
     }
 
     /**

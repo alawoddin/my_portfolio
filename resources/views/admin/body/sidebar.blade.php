@@ -65,10 +65,22 @@
             <ul class="nav-second-level">
                 <li>
                     <a href="{{route('all.about')}}" class="tp-link">All About</a>
-                </li>
-                
-                
-                    
+                </li>                  
+            </ul>
+        </div>
+    </li>
+
+            <li>
+        <a href="#skills" data-bs-toggle="collapse">
+            <i data-feather="users"></i>
+            <span> Skills </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="skills">
+            <ul class="nav-second-level">
+                <li>
+                    <a href="{{route('all.skill')}}" class="tp-link">All skill</a>
+                </li>                  
             </ul>
         </div>
     </li>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Backend\SkillController;
 use App\Http\Controllers\googlecontroller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -26,11 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-require __DIR__.'/auth.php';
-
-
+    
 Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 
 //google login
@@ -62,6 +60,20 @@ Route::controller(AboutController::class)->group(function() {
     Route::get('edit/about/{id}', 'EditAbout')->name('about.edit');
     Route::post('update/about', 'UpdateAbout')->name('update.about');
     Route::get('delete/about/{id}', 'DeleteAbout')->name('about.delete');
+});
 
+Route::controller(SkillController::class)->group(function() {
+
+    Route::get('all/skill' , 'AllSkill')->name('all.skill');
+    Route::get('add/skill' , 'AddSkill')->name('add.skill');
+    Route::post('store/skill', 'StoreSkill')->name('store.skill');
+    Route::get('edit/skill/{id}', 'EditSkill')->name('skill.edit');
+    Route::post('update/skill', 'UpdateSkill')->name('update.skill');
+    Route::get('delete/skill/{id}', 'DeleteSkill')->name('skill.delete');
 
 });
+
+});
+
+require __DIR__.'/auth.php';
+

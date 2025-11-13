@@ -1,10 +1,15 @@
+  
+  @php
+    $skill = \App\Models\Skill::latest()->first();
+  @endphp
+  
   <section class="skills section" id="skills">
                 <h2 class="section-title">Skills</h2>
 
                 <div class="skills__container bd-grid">          
                     <div>
-                        <h2 class="skills__subtitle">Profesional Skills</h2>
-                        <p class="skills__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit optio id vero amet, alias architecto consectetur error eum eaque sit.</p>
+                        <h2 class="skills__subtitle">{{$skill->title}}</h2>
+                        <p class="skills__text">{{$skill->description}}</p>
                         <div class="skills__data">
                             <div class="skills__names">
                                 <i class='bx bxl-html5 skills__icon'></i>
@@ -38,7 +43,7 @@
                                 
                             </div>
                             <div>
-                                <span class="skills__percentage">65%</span>
+                                <span class="skills__percentage">85%</span>
                             </div>
                         </div>
                         <div class="skills__data">
@@ -56,7 +61,7 @@
                     </div>
                     
                     <div>              
-                        <img src="{{asset('frontend/assets/img/work3.jpg')}}" alt="" class="skills__img">
+                        <img src="{{asset($skill->photo)}}" alt="" class="skills__img">
                     </div>
                 </div>
             </section>
