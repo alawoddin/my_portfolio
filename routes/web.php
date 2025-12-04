@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController;
+use App\Http\Controllers\Backend\data_skillController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\SkillController;
 use App\Http\Controllers\googlecontroller;
@@ -72,6 +73,17 @@ Route::controller(SkillController::class)->group(function() {
     Route::get('delete/skill/{id}', 'DeleteSkill')->name('skill.delete');
 
 });
+
+Route::controller(data_skillController::class)->group(function() {
+
+    Route::get('all/data/skill' , 'AllDataSkill')->name('all.data.skill');
+    Route::get('add/data/skill' , 'AddDataSkill')->name('add.data.skill');
+    Route::post('store/data/skill', 'StoreDataSkill')->name('store.data.skill');
+    Route::get('edit/data_skill/{id}', 'EditDataSkill')->name('data.edit');
+    Route::post('update/data_skill', 'UpdateDataSkill')->name('update.data');
+    Route::get('delete/data_skill/{id}', 'DeleteDataSkill')->name('data.delete');
+
+} );
 
 });
 

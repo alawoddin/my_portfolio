@@ -69,7 +69,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('data_skills', function (Blueprint $table) {
+        Schema::create('dataskills', function (Blueprint $table) {
             $table->id();
             $table->string('icon');
             $table->string('title');

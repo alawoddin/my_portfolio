@@ -85,6 +85,21 @@
         </div>
     </li>
 
+           <li>
+        <a href="#data" data-bs-toggle="collapse">
+            <i data-feather="users"></i>
+            <span>Data Skills </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="data">
+            <ul class="nav-second-level">
+                <li>
+                    <a href="{{route('all.data.skill')}}" class="tp-link">All Data skill</a>
+                </li>                  
+            </ul>
+        </div>
+    </li>
+
 
 
     <li>
