@@ -68,6 +68,14 @@ return new class extends Migration
             $table->string('photo');
             $table->timestamps();
         });
+
+        Schema::create('data_skills', function (Blueprint $table) {
+            $table->id();
+            $table->string('icon');
+            $table->string('title');
+            $table->integer('value');
+            $table->timestamps();
+        });
     }
 
     /**
