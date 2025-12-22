@@ -12,8 +12,8 @@
 
                 <div class="skills__container bd-grid">          
                     <div>
-                        <h2 class="skills__subtitle">{{$skill->title}}</h2>
-                        <p class="skills__text">{{$skill->description}}</p>
+                        <h2 class="skills__subtitle">{{$skill->title ?? "developer"}}</h2>
+                        <p class="skills__text">{{$skill->description ?? "demo"}}</p>
 
                         @foreach($data as  $item)
                              <div class="skills__data">
@@ -21,7 +21,7 @@
                                 <i class='{{$item->icon}}'></i>
                                 <span class="skills__name">{{$item->title}}</span>
                             </div>
-                            <div class="skills__bar skills__html">
+                            <div class="skills__bar skills__html {{$item->value}}">
 
                             </div>
                             <div>

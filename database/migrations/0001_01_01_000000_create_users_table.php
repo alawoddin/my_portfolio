@@ -76,6 +76,13 @@ return new class extends Migration
             $table->integer('value');
             $table->timestamps();
         });
+
+         Schema::create('works', function (Blueprint $table) {
+            $table->id();
+            $table->string('image');
+            $table->string('link');
+            $table->timestamps();
+        });
     }
 
     /**

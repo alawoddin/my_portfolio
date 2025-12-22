@@ -100,6 +100,21 @@
         </div>
     </li>
 
+            <li>
+        <a href="#work" data-bs-toggle="collapse">
+            <i data-feather="users"></i>
+            <span>Works </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="work">
+            <ul class="nav-second-level">
+                <li>
+                    <a href="{{route('all.work')}}" class="tp-link">All Work</a>
+                </li>                  
+            </ul>
+        </div>
+    </li>
+
 
 
     <li>

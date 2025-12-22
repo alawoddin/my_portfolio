@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\data_skillController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\SkillController;
+use App\Http\Controllers\Backend\WorkController;
 use App\Http\Controllers\googlecontroller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -83,7 +84,16 @@ Route::controller(data_skillController::class)->group(function() {
     Route::post('update/data_skill', 'UpdateDataSkill')->name('update.data');
     Route::get('delete/data_skill/{id}', 'DeleteDataSkill')->name('data.delete');
 
-} );
+});
+
+Route::controller(WorkController::class)->group(function() {
+    Route::get('all/work' , 'AllWork')->name('all.work');
+    Route::get('add/work' , 'AddWork')->name('add.work');
+    Route::post('store/work', 'StoreWork')->name('store.work');
+    Route::get('edit/work/{id}', 'EditWork')->name('work.edit');
+    Route::post('update/work', 'UpdateWork')->name('update.work');
+    Route::get('delete/work/{id}', 'DeleteWork')->name('work.delete');
+});
 
 });
 
