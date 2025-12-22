@@ -116,6 +116,21 @@
     </li>
 
 
+       <li>
+        <a href="#contact" data-bs-toggle="collapse">
+            <i data-feather="users"></i>
+            <span>Contact </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="contact">
+            <ul class="nav-second-level">
+                <li>
+                    <a href="{{route('all.contact')}}" class="tp-link">All Contact</a>
+                </li>                  
+            </ul>
+        </div>
+    </li>
+
 
     <li>
         <a href="#sidebarError" data-bs-toggle="collapse">

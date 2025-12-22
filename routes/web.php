@@ -2,12 +2,15 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\data_skillController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\SkillController;
 use App\Http\Controllers\Backend\WorkController;
+use App\Http\Controllers\contactcontroller as ControllersContactcontroller;
 use App\Http\Controllers\googlecontroller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\usercontactcontroller;
 use Illuminate\Support\Facades\Route;
 
 use function Pest\Laravel\get;
@@ -95,6 +98,19 @@ Route::controller(WorkController::class)->group(function() {
     Route::get('delete/work/{id}', 'DeleteWork')->name('work.delete');
 });
 
+Route::controller(ContactController::class)->group(function() {
+    Route::get('all/contact' , 'AllContact')->name('all.contact');
+
+});
+
+Route::controller(usercontactcontroller::class)->group(function() {
+    Route::get('contact/page', 'ContactPage')->name('contact.page');
+    Route::get('contact', 'Contact')->name('contact.page');
+    Route::post('store/message', 'StoreMessage')->name('store.message');
+
+
+
+});
 });
 
 require __DIR__.'/auth.php';
