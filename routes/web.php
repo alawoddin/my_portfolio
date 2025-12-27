@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 use function Pest\Laravel\get;
 
-Route::get('/', function () {
-    return view('home.index');
-});
-
-
 // Route::get('/', function () {
-//     return view('auth.login');
+//     return view('home.index');
 // });
+
+
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 Route::get('/dashboard', function () {
     return view('admin.index');

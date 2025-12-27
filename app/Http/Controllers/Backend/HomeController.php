@@ -16,6 +16,8 @@ class HomeController extends Controller
     {
         $homes = Home::latest()->get();
 
+        
+
         return view('admin.backend.home.all_home', compact('homes'));
     }
 
