@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\data_skillController;
 use App\Http\Controllers\Backend\DataSkillController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\SkillController;
@@ -79,7 +80,7 @@ Route::middleware('auth')->group(function () {
     });
 
     // Data Skill
-    Route::controller(DataSkillController::class)->group(function () {
+    Route::controller(data_skillController::class)->group(function () {
         Route::get('all/data/skill', 'AllDataSkill')->name('all.data.skill');
         Route::get('add/data/skill', 'AddDataSkill')->name('add.data.skill');
         Route::post('store/data/skill', 'StoreDataSkill')->name('store.data.skill');
